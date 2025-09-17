@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Botão que Foge</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgb(235, 34, 34);
+      font-family: Arial, sans-serif;
+      overflow: hidden; /* evita scroll */
+      flex-direction: column;
+    }
+
+    .texto {
+      font-size: 22px;
+      font-weight: bold;
+      color: white;
+      margin-bottom: 15px;
+    }
+
+    .imagem {
+      width: 100%;
+      max-width: 350px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+
+    .btn-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px; /* espaço entre os botões */
+      position: relative;
+    }
+
+    .btn {
+      background: white;
+      color: red;
+      border: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+      position: relative;
+    }
+
+    .btn:hover {
+      background: #ffe6e6;
+    }
+
+    /* botão que foge */
+    #btnFugir {
+      position: relative; /* começa ao lado do sim */
+    }
+  </style>
+</head>
+<body>
+  <div class="texto">Você aceita sair comigo? 💖</div>
+
+  <img class="imagem" src="gif-fofo-de-coracao-09.gif" alt="Imagem Centralizada">
+
+  <div class="btn-container">
+    <button class="btn" id="btnFugir">não</button>
+    <a href="https://youtu.be/3WQ0xZLOmes?si=-4J1ENifrOOlND6q" target="_blank">
+      <button class="btn">sim</button>
+    </a>
+  </div>
+
+  <script>
+    const btnFugir = document.getElementById("btnFugir");
+
+    function moverBotao() {
+      const maxX = window.innerWidth - btnFugir.clientWidth;
+      const maxY = window.innerHeight - btnFugir.clientHeight;
+
+      const randX = Math.floor(Math.random() * maxX);
+      const randY = Math.floor(Math.random() * maxY);
+
+      btnFugir.style.position = "absolute";
+      btnFugir.style.left = randX + "px";
+      btnFugir.style.top = randY + "px";
+    }
+
+    // PC (mouse)
+    btnFugir.addEventListener("mouseover", moverBotao);
+
+    // Celular (toque)
+    btnFugir.addEventListener("touchstart", (e) => {
+      e.preventDefault();
+      moverBotao();
+    });
+  </script>
+</body>
+</html>
